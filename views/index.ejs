@@ -3,10 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather Forecast</title>
     <link href="style.css" rel="stylesheet" />
 </head>
 <body>
+    <h1>Weather Forecast</h1>
+    <% if(locals.data) {%>
+    <h3><strong><%=data.location.name%></strong>, <%= data.location.region %>(<%= data.location.country %>) <%= c.temp_c %>℃ </h3>
     
+    <h3>Current Weather</h3>
+    <ul>
+        <li><%= c.condition.text %></li>
+        <li>Last update: <%= c.last_updated %></li>
+        <li>Feels Like: <%= c.feelslike_c %>℃</li>
+        <li>Wind: <%= c.wind_dir %> <%= c.wind_kph %> km/h</li>
+        <li>Pressure: <%= c.pressure_mb %> mb</li>
+        <li>Humidity: <%= c.humidity %>%</li>
+        <li>UV index: <%= c.uv %></li>
+        <li>Visibility: <%= c.vis_km %> km</li>
+        <li>Air Quality: <%= c.air_quality %> </li>
+    </ul>
+
+
+
+
+
+    <% } %>
+
+    <% if(locals.error) {%>
+        <h2><%= error %></h2>
+    <% } %>
 </body>
 </html>
